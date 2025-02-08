@@ -2,6 +2,8 @@ import { useRef, useState } from 'react'
 import '../index.css'
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap'
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -23,6 +25,29 @@ const Hero = () => {
 
     setCurrentIndex(upcomingVideoIndex);
   }
+
+  useGSAP(() => {
+    if(hasClicked) {
+      gsap.set('#next-video', { visibility: 'visible'})
+
+      gsap.to('#next-video', {
+        transformOrigin: 'center-center',
+        scale: 1,
+        width: '100%',
+        height: '100%',
+        duration: 1,
+        ease: 'power1.inOut',
+        onStart: () => nextVideoRef.current.play(),
+      })
+
+      gsap.from('#current-video', {
+        transformOrigin: 'center-center',
+        scale: 0,
+        duration: 1.5,
+        ease: 'power1.inOut',
+      })
+    }
+  }, {dependencies: [currentIndex], revertOnUpdate: true})
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`
 
@@ -61,13 +86,13 @@ const Hero = () => {
           onLoadedData={handleVideoLoad}
           />
         </div>
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75 text-9xl">
           G<b>A</b>MING
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-blue-100">
+            <h1 className="special-font hero-heading text-blue-100 text-9xl">
               redefi<b>n</b>e
             </h1>
 
@@ -79,7 +104,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black text-9xl">
           G<b>A</b>MING
         </h1>
     </div>
