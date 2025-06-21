@@ -125,13 +125,13 @@ const Hero = () => {
           onLoadedData={handleVideoLoad}
           />
         </div>
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75 text-9xl">
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75 md:text-9xl text-8xl">
           G<b>A</b>MING
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-blue-100 text-9xl">
+            <h1 className="special-font hero-heading text-blue-100 md:text-9xl text-8xl">
               redefi<b>n</b>e
             </h1>
 
@@ -143,7 +143,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black text-9xl">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black md:text-9xl text-8xl">
           G<b>A</b>MING
         </h1>
     </div>
